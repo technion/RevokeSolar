@@ -20,5 +20,10 @@ From an Administrative Powershell session, run the script `RevokeSolar.ps1` from
 
 ## Impact
 
-The circumstances under which Windows blocks applications with revoked certificates don't appear consistent to me. However, if you run the downloaded CostCalculator.exe "as administrator" this appear to check and present a red "denied" screen every time.
+Windows does not always outright block an executable with a revoked certificate. However, UAC will always deny execution "as administrator". You can find this documented here:
 
+https://docs.microsoft.com/en-us/troubleshoot/windows-client/identity/uac-blocks-elevation-executable-apps
+
+If you would like to test this as a standard user, you may need to wait a while due to OCSP caching. After which, running the executable should present you a less firm, but still unskippable block message:
+
+![Running executable with revoked certificate](standarduser.png)
