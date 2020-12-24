@@ -20,4 +20,5 @@ From an Administrative Powershell session, run the script `RevokeSolar.ps1` from
 
 ## Impact
 
-You can attempt to run the downloaded CostCalculator.exe. Due to revocation list caching in Windows this may take a period to become unavailable.
+The circumstances under which Windows blocks applications with revoked certificates don't appear consistent to me. However, if you run the downloaded CostCalculator.exe "as administrator" this appear to check and present a red "denied" screen every time.
+
