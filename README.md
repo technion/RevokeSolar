@@ -2,6 +2,7 @@
 
 Following the recent Solarwinds incident, it is a common view that the impacted certificate should be revoked. This is currently planned, but not until February 22nd per this advisory:
 https://status.solarwindsmsp.com/2020/12/18/update-digital-certificate-revocation-date-change/
+
 Some parties have recommended using the existing certificate as an IOC:
 https://github.com/fireeye/sunburst_countermeasures/pull/3
 
@@ -12,6 +13,10 @@ In order to be more proactive, this script will allow you to revoke the certific
 ## Automated Deployment
 
 In a larger network you would be much better served with a Group Policy Object to automate this process. However, you may wish to start with this script to most easily obtain the certificate to revoke.
+
+## Usage
+
+From an Administrative Powershell session, run the script `RevokeSolar.ps1` from a temporary directory. Once completed the script and the file it creates in that temporary directory may be deleted.
 
 ## Impact
 

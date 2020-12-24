@@ -1,8 +1,5 @@
 ﻿Set-StrictMode -Version 2
 
-# This script is designed to be fully self contained and verifiable. It does not ship executables or certificates themselves in order to allow you to
-# independently verify its actions.
-
 # This legitimate file is signed using the impacted Code Signing Certificate
 Invoke-WebRequest -Uri 'https://downloads.solarwinds.com/solarwinds/Release/FreeTool/SolarWinds-FT-CostCalculatorforAzure-1.0.zip' -OutFile SolarWinds-FT-CostCalculatorforAzure-1.0.zip
 Expand-Archive -LiteralPath .\SolarWinds-FT-CostCalculatorforAzure-1.0.zip
@@ -19,8 +16,8 @@ if ($badthumbprint -eq  $cert.Thumbprint) {
 }
 
 # Write to disk and import to disallowed certificates
-$cert | Export-Certificate -FilePath .\SolarwindsLLC.cer -Type CERT
-Import-Certificate .\SolarwindsLLC.cer -CertStoreLocation Cert:\LocalMachine\Disallowed\
+$cert | Export-Certificate -FilePath .\SolarwindsLLC.cer -Type CERT | Out-Null
+Import-Certificate .\SolarwindsLLC.cer -CertStoreLocation Cert:\LocalMachine\Disallowed\ | Out-Null
 
 # Check
-Get-AuthenticodeSignature .\RequirementsChecker.exe | fl Status,StatusMessage
+Get-AuthenticodeSignature .\SolarWinds-FT-CostCalculatorforAzure-1.0\CostCalculator.exe | fl Status,StatusMessage
